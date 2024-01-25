@@ -1,0 +1,47 @@
+.wrapper {
+  position: relative;
+  background: #e5e6e8;
+  padding-bottom: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.infoWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.titleWrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  h3 {
+    margin: 4px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.price {
+  padding-bottom: 4px;
+  padding-top: 7px;
+  font-size: 22px;
+}

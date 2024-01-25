@@ -1,0 +1,21 @@
+/*-- Colors --*/
+$bg-dark: #E8F6EF;
+$bg-transparent: rgba(23, 27, 33, 0.40);
+$text-color: #4C4C6D;
+$green: #E8F6EF;
+
+$menu-background-gradient: linear-gradient(to bottom, #23262B, $bg-dark);
+$menu-hover-element: rgba(45, 49, 57, 0.50);
+$active-green-light: rgba(156, 187, 125, 0.11);
+$active-green: #9CBB7D;
+$menu-border-gradient: linear-gradient(to bottom, #343840, $bg-dark);
+$link-color: #74ADE9;
+$dark-red: #74384E;
+
+/*-- Breakpoints --*/
+$max-width: 1400px;
+
+/*-- Other --*/
+$menu-element-padding: 2px;
+$menu-element-font-size: 17px;
+$border-padding-width: 8px;

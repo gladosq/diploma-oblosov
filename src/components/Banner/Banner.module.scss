@@ -1,0 +1,169 @@
+//$font-size-elements: 22px;
+//$height-element: 500px;
+
+.pixelatedWrapper {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.pixelatedImage {
+  position: relative;
+  object-fit: cover;
+  width: 100%;
+}
+
+/*-- Фикс бесконечной ширины свайпера --*/
+.wrapper {
+  display: grid;
+}
+
+.outerWrapper {
+  width: 100%;
+  min-width: 0;
+}
+/*-- ~~~ --*/
+
+.wrapper {
+  margin-bottom: 100px;
+  position: relative;
+  //width: 90%;
+}
+
+.slide {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  left: 10%;
+  bottom: 10%;
+  z-index: 10;
+  font-weight: 400;
+  color: white;
+  font-size: 40px;
+  text-transform: uppercase;
+  max-width: 40%;
+}
+
+.outerWrapper {
+  //background: $bg-transparent;
+  //padding: $border-padding-width;
+  box-sizing: border-box;
+}
+
+.swiperInner {
+  box-sizing: border-box;
+}
+
+.imageWrapper {
+  position: relative;
+  height: 600px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+  //height: $height-element;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  //font-size: $font-size-elements;
+}
+
+.navigation {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+  //margin-bottom: 10px;
+  position: absolute;
+  bottom: 20px;
+  color: white;
+  z-index: 12;
+  padding-bottom: 18px;
+}
+
+.arrowPrev,
+.arrowNext {
+  user-select: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.15s transform ease-in-out;
+  color: white;
+
+  &:hover {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+}
+
+.arrowDisabled {
+  opacity: 0.1;
+
+  &:hover,
+  &:active {
+    opacity: 0.1;
+  }
+}
+
+.arrowNext {
+  margin-right: 100px;
+}
+
+.autoplayProgress {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+
+.autoplayProgress svg {
+  --progress: 0;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  stroke-width: 4px;
+  stroke: white;
+  fill: none;
+  stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+  stroke-dasharray: 125.6;
+  transform: rotate(-90deg);
+}

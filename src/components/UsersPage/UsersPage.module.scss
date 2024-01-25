@@ -1,0 +1,32 @@
+.wrapper {
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.item {
+  background: #e5e6e8;
+  border-radius: 6px;
+  padding: 20px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.redButton {
+  &:hover {
+    color: white;
+  }
+}

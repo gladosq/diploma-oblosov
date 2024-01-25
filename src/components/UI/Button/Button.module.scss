@@ -1,0 +1,42 @@
+.button {
+  color: $text-color;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 6px 12px;
+  border: 1px solid $text-color;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+  transition-property: background, color;
+  background: transparent;
+
+  &:hover {
+    color: $bg-dark;
+    background: $text-color;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.buttonSecondary {
+  border: 1px solid $active-green;
+  background: $active-green;
+  color: $bg-dark;
+
+  &:hover {
+    background: $active-green-light;
+    color: $active-green;
+  }
+}
+
+.buttonRed {
+  border: 1px solid $dark-red;
+  color: $dark-red;
+  background: transparent;
+
+  &:hover {
+    color: $text-color;
+    background: $dark-red;
+  }
+}

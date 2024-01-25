@@ -1,0 +1,57 @@
+.wrapper {
+  background: $text-color;
+}
+
+.form {
+  padding-top: 40px;
+}
+
+.innerWrapper {
+  max-width: $max-width;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  a {
+    color: white;
+    transition: 0.25s all ease-in-out;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 1;
+    }
+  }
+}
+
+.formButton {
+  margin-top: 10px;
+  width: 160px;
+}
+
+.account {
+  z-index: 14;
+  position: relative;
+
+  a {
+    color: white;
+    background: #053a5f;
+    padding: 6px 16px;
+    display: block;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+  }
+}
