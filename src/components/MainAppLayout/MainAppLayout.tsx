@@ -1,16 +1,17 @@
 import s from './MainAppLayout.module.scss';
-import {Outlet, useLocation} from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 import Header from '../Header/Header.tsx';
+import Footer from '../Footer/Footer.tsx';
 
 export default function MainAppLayout() {
-  // const {pathname} = useLocation();
-  // const currentPaths = pathname.split('/').slice(1);
 
   return (
     <div className={s.wrapper}>
       <Header/>
-      <Outlet/>
-      <h1>footer</h1>
+      <div className={s.body}>
+        <Outlet/>
+      </div>
+      <Footer/>
     </div>
   );
 }

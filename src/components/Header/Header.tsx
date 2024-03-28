@@ -15,7 +15,7 @@ import {useState} from 'react';
 import {ADMIN_DATA} from '../../store/data.ts';
 import useCarsStore from '../../store/store.ts';
 import {DownOutlined} from '@ant-design/icons';
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 type NotificationPlacement = NotificationArgsProps['placement'];
 
@@ -62,6 +62,39 @@ export default function Header() {
 
       return;
     }
+
+    if (values.username !== ADMIN_DATA.login) {
+      const currentUser = users.find(item => item.login === values.username);
+
+      if (!currentUser) {
+        api.info({
+          message: 'Авторизация',
+          description:
+            'Ошибка авторизации',
+          placement: 'top',
+          type: 'error'
+        });
+      } else {
+
+        if (currentUser.password === values.password) {
+          openNotification('top');
+          setUserLogged(currentUser);
+          setIsModalOpen(false);
+        } else {
+          api.info({
+            message: 'Авторизация',
+            description:
+              'Неверный пароль',
+            placement: 'top',
+            type: 'error'
+          });
+        }
+
+      }
+
+
+
+    }
   };
 
   type FieldType = {
@@ -73,11 +106,7 @@ export default function Header() {
   let items: MenuProps['items'] = [
     {
       label: 'Список авто',
-      key: '0',
-    },
-    {
-      label: '2nd menu item',
-      key: '1',
+      key: 'cars',
     },
     {
       type: 'divider',
@@ -96,7 +125,7 @@ export default function Header() {
       },
       {
         label: 'Список заявок',
-        key: 'moderateList',
+        key: 'offers',
       },
       {
         label: 'Список пользователей',
@@ -127,6 +156,15 @@ export default function Header() {
     if (key === 'users') {
       navigate('/users');
     }
+
+    if (key === 'cars') {
+      navigate('/cars');
+    }
+
+
+    if (key === 'offers') {
+      navigate('/offers');
+    }
   };
 
   return (
@@ -137,9 +175,12 @@ export default function Header() {
           <Logo/>
         </a>
         <div className={s.navigation}>
-          <a href='/'>Главная</a>
-          <a href='/'>Список авто</a>
-          <a href='/'>Продать авто</a>
+          <Link className={s.carsLink} to={'/'}>
+            Главная
+          </Link>
+          <Link className={s.carsLink} to={'/cars'}>
+            Список авто
+          </Link>
         </div>
         <div className={s.account}>
           {userLogged ? (

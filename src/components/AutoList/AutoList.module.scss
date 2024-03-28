@@ -5,3 +5,22 @@
   max-width: $max-width;
   margin: 60px auto;
 }
+
+.carsLink {
+  margin-top: 50px;
+  font-size: 26px;
+  width: 100%;
+  display: block;
+  max-width: $max-width;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 3px;
+  background: rgba(139, 139, 215, 0.58);
+  padding: 10px 46px;
+  transition: 0.25s all;
+  width: 500px;
+
+  &:hover {
+    transform: scale(1.08);
+  }
+}

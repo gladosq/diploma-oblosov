@@ -14,6 +14,7 @@ type FieldType = {
   horsepower?: string;
   year?: string;
   drive?: string;
+  imageUrl?: string;
 };
 
 export default function ModeratePage() {
@@ -60,6 +61,7 @@ export default function ModeratePage() {
               horsepower={item.horsepower}
               year={item.year}
               drive={item.drive}
+              imageUrl={item.imageUrl}
             />
           );
         })}
@@ -72,7 +74,7 @@ export default function ModeratePage() {
         Добавить новое объявление
       </Button>
       <Modal
-        title='Войти'
+        title='Создание объявления'
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -80,7 +82,7 @@ export default function ModeratePage() {
       >
         <Form
           name='basic'
-          labelCol={{span: 6}}
+          labelCol={{span: 10}}
           initialValues={{remember: true}}
           onFinish={onFinish}
           autoComplete='off'
@@ -125,6 +127,13 @@ export default function ModeratePage() {
           <Form.Item<FieldType>
             label='Двигатель'
             name='drive'
+            rules={[{required: true, message: 'Пожалуйста, заполните поле'}]}
+          >
+            <Input/>
+          </Form.Item>
+          <Form.Item<FieldType>
+            label='Ссылка на изображение'
+            name='imageUrl'
             rules={[{required: true, message: 'Пожалуйста, заполните поле'}]}
           >
             <Input/>

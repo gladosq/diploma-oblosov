@@ -2,6 +2,7 @@ import {nanoid} from 'nanoid';
 import image1 from './../../public/images/car1.jpg';
 import image2 from './../../public/images/car2.jpg';
 import image3 from './../../public/images/car3.jpg';
+import image4 from './../../public/images/car4.jpg';
 import {CarType} from './store.ts';
 
 export const DEFAULT_CAR_LIST: CarType[] = [
@@ -35,6 +36,16 @@ export const DEFAULT_CAR_LIST: CarType[] = [
     drive: '4WD',
     image: image3
   },
+  {
+    id: nanoid(),
+    name: 'Audi Q2',
+    price: 2255000,
+    transmission: 'АКПП',
+    horsepower: 150,
+    year: 2023,
+    drive: '4WD',
+    image: image4
+  },
 ];
 
 export const ADMIN_DATA = {
@@ -42,7 +53,7 @@ export const ADMIN_DATA = {
   password: '12345'
 };
 
-enum UserRoles {
+export enum UserRoles {
   Manager = 'Manager',
   Admin = 'Admin',
   User = 'User'

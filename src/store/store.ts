@@ -11,13 +11,16 @@ export type CarType = {
   year: number;
   drive: string;
   image: string;
+  imageUrl?: string;
 }
 
 type CarsState = {
   cars: CarType[];
+  carsModerate: CarType[];
   users: UserType[];
   userLogged: UserType | null;
   setCars: (value: CarType[]) => void;
+  setCarsModerate: (value: CarType[]) => void;
   setUserLogged: (value: UserType | null) => void;
   setUsers: (value: UserType[]) => void;
 }
@@ -26,9 +29,11 @@ const useCarsStore = create<CarsState>()(
   persist(
     (set) => ({
       cars: DEFAULT_CAR_LIST,
+      carsModerate: [],
       users: DEFAULT_USERS,
       userLogged: null,
       setCars: (value) => set(() => ({cars: value})),
+      setCarsModerate: (value) => set(() => ({carsModerate: value})),
       setUserLogged: (value) => set(() => ({userLogged: value})),
       setUsers: (value) => set(() => ({users: value})),
     }),

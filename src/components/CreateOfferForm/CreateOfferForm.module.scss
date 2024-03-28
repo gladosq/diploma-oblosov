@@ -1,0 +1,26 @@
+.wrapper {
+  max-width: $max-width;
+  margin: 0 auto;
+  width: 600px;
+  margin-top: 200px;
+}
+
+.form {
+  width: 100%;
+}
+
+.formWrapper {
+  background: rgba(5, 58, 95, 0.1);
+  padding: 70px 40px;
+}
+
+.input {
+  border: 1px solid transparent;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.formButton {
+  background: rgba(139, 139, 215, 0.98);
+  border-radius: 2px;
+}

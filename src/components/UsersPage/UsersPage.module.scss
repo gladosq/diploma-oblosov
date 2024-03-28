@@ -1,6 +1,7 @@
 .wrapper {
   max-width: $max-width;
   margin: 0 auto;
+  width: 100%;
 }
 
 .list {
@@ -29,4 +30,8 @@
   &:hover {
     color: white;
   }
+}
+
+.addButton {
+  margin-top: 40px;
 }

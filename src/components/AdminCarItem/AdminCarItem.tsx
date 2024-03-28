@@ -2,7 +2,7 @@ import s from './AdminCarItem.module.scss';
 import EyeIcon from '../UI/Icons/EyeIcon.tsx';
 import useCarsStore, {CarType} from '../../store/store.ts';
 import Button from '../UI/Button/Button.tsx';
-import {Button as AntdButton, Form, Input, Modal, Popconfirm} from 'antd';
+import {Button as AntdButton, Form, Input, Modal, notification, Popconfirm} from 'antd';
 import {useState} from 'react';
 
 type FieldType = {
@@ -12,14 +12,29 @@ type FieldType = {
   horsepower?: string;
   year?: string;
   drive?: string;
+  isModerate?: boolean;
 };
 
-export default function AdminCarItem({id, name, price, transmission, horsepower, year, drive, image}: CarType) {
+export default function AdminCarItem({
+  id,
+  name,
+  price,
+  transmission,
+  horsepower,
+  year,
+  drive,
+  image,
+  imageUrl,
+  isModerate
+}: CarType & {isModerate?: boolean}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const {cars, setCars} = useCarsStore();
+  const {cars, carsModerate, setCarsModerate, setCars} = useCarsStore();
 
   const [form] = Form.useForm();
+
+  const [api, contextHolder] = notification.useNotification();
+
 
   const confirm = () => {
     const actualCars = cars.filter((item) => item.id !== id);
@@ -43,10 +58,50 @@ export default function AdminCarItem({id, name, price, transmission, horsepower,
     setIsModalOpen(false);
   };
 
+  const onApproveModerateHandler = () => {
+    const approvedCar = {
+      id, name, price, transmission, horsepower, year, drive, image, imageUrl
+    };
+
+
+    // const currentCarIndex = cars.findIndex((item) => item.id === id);
+    const actualCarsModerate = carsModerate?.filter((item) => item.id !== id);
+
+    setCarsModerate(actualCarsModerate);
+
+    setCars([...cars, approvedCar]);
+
+    api.info({
+      message: 'Модерация',
+      description:
+        'Объявление одобрено',
+      placement: 'top',
+      type: 'success'
+    });
+    // const updatedCar = {...cars[currentCarIndex], ...values};
+  };
+
+  const onDeleteModerateHandler = () => {
+    const actualCars = carsModerate?.filter((item) => item.id !== id);
+    setCarsModerate(actualCars);
+
+    api.info({
+      message: 'Удаление',
+      description:
+        'Объявление удално',
+      placement: 'top',
+      type: 'success'
+    });
+  };
+
   return (
     <div className={s.wrapper}>
-      <img className={s.image} src={image} alt='Изображение автомобиля'/>
-
+      {contextHolder}
+      {imageUrl ? (
+        <img className={s.image} src={imageUrl} alt='Изображение автомобиля'/>
+      ) : (
+        <img className={s.image} src={image} alt='Изображение автомобиля'/>
+      )}
       <div className={s.titleWrapper}>
         <h3>{name}</h3>
         <p className={s.caption}>Цена без учёта выгод</p>
@@ -71,24 +126,42 @@ export default function AdminCarItem({id, name, price, transmission, horsepower,
         </div>
       </div>
       <div className={s.buttons}>
-        <Button
-          onClick={() => {
-            setIsModalOpen(true);
-          }}
-        >
-          Редактировать
-        </Button>
-        <Popconfirm
-          title='Удаление'
-          description='Удалить данное объявление?'
-          onConfirm={confirm}
-          okText='Да'
-          cancelText='Отмена'
-        >
-          <Button>
-            Удалить
-          </Button>
-        </Popconfirm>
+        {isModerate ? (
+          <>
+            <Button
+              onClick={onApproveModerateHandler}
+            >
+              Одобрить
+            </Button>
+            <Button
+              onClick={onDeleteModerateHandler}
+            >
+              Удалить
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
+            >
+              Редактировать
+            </Button>
+            <Popconfirm
+              title='Удаление'
+              description='Удалить данное объявление?'
+              onConfirm={confirm}
+              okText='Да'
+              cancelText='Отмена'
+            >
+              <Button>
+                Удалить
+              </Button>
+            </Popconfirm>
+
+          </>
+        )}
       </div>
       <Modal
         title='Войти'

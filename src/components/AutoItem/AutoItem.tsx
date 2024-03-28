@@ -3,10 +3,11 @@ import EyeIcon from './../../components/UI/Icons/EyeIcon.tsx';
 import Button from '../UI/Button/Button.tsx';
 import {CarType} from '../../store/store.ts';
 
-export default function AutoItem({name, price, transmission, horsepower, year, drive, image}: CarType) {
+export default function AutoItem({name, price, transmission, horsepower, year, drive, image, imageUrl}: CarType) {
+  console.log('imageUrl:', imageUrl);
   return (
     <div className={s.wrapper}>
-      <img className={s.image} src={image} alt="Изображение автомобиля"/>
+      <img className={s.image} src={imageUrl ? imageUrl : image} alt="Изображение автомобиля"/>
       <div className={s.infoWrapper}>
         <div className={s.infoItem}>
           <EyeIcon/>
