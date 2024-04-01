@@ -89,11 +89,7 @@ export default function Header() {
             type: 'error'
           });
         }
-
       }
-
-
-
     }
   };
 

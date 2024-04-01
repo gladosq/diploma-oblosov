@@ -11,6 +11,7 @@ export default function AutoList() {
       <div className={s.wrapper}>
         {cars?.slice(0, 3).map((item) => (
           <AutoItem
+            id={item.id}
             image={item.image}
             name={item.name}
             price={item.price}

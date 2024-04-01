@@ -2,8 +2,9 @@
   position: relative;
   background: #e5e6e8;
   padding-bottom: 20px;
-  border-radius: 6px;
   overflow: hidden;
+
+  @include card;
 }
 
 .image {
@@ -25,6 +26,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 13px;
+  opacity: 0.9;
+
+  svg {
+    width: 16px;
+  }
 }
 
 .titleWrapper {
@@ -44,4 +51,8 @@
   padding-bottom: 4px;
   padding-top: 7px;
   font-size: 22px;
+}
+
+.button {
+  margin-top: 10px;
 }

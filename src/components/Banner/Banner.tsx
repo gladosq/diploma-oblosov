@@ -7,10 +7,10 @@ import 'swiper/css/free-mode';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {EffectCreative, Navigation, Pagination, Autoplay} from 'swiper/modules';
 
-import image3 from './../../../public/images/car3.jpg';
-import image1 from './../../../public/images/car1.jpg';
-import image2 from './../../../public/images/car2.jpg';
-import image4 from './../../../public/images/car4.jpg';
+import image3 from './../../../public/images/cars-new-1.jpg';
+import image1 from './../../../public/images/cars-new-2.jpg';
+import image2 from './../../../public/images/cars-new-3.jpg';
+import image4 from './../../../public/images/cars-new-4.jpg';
 import {useRef} from 'react';
 
 export default function Banner() {
@@ -54,18 +54,19 @@ export default function Banner() {
             </div>
           </SwiperSlide>
           <SwiperSlide className={s.slide}>
-            <h1 className={s.title}>Любой новый авто из Китая!</h1>
+            <h1 className={s.title}>Любой новый авто из Китая</h1>
             <div className={s.imageWrapper} >
               <img className={s.image} src={image2} alt=""/>
             </div>
           </SwiperSlide>
           <SwiperSlide className={s.slide}>
-            <h1 className={s.title}>Новые авто</h1>
+            <h1 className={s.title}>Трейд-ин</h1>
             <div className={s.imageWrapper} >
               <img className={s.image} src={image1} alt=""/>
             </div>
           </SwiperSlide>
           <SwiperSlide className={s.slide}>
+            <h1 className={s.title}>Отличные автомобили от дилеров</h1>
             <div className={s.imageWrapper} >
               <img className={s.image} src={image4} alt=""/>
             </div>
